@@ -19,6 +19,11 @@ namespace JOIEnergy
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureLogging(loggingBuilder => 
+                    {
+                        loggingBuilder.AddLog4Net("CfgFile/log4net.config");
+                    }
+                )
                 .UseStartup<Startup>()
                 .Build();
     }
